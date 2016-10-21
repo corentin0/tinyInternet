@@ -1201,10 +1201,23 @@ bgp router 3.1.0.2
     exit
 exit
 sim run
+print "4.1.0.1 --->2.0.0.1\n"
 net node 4.1.0.1 traceroute 2.0.0.1
+
+print "\n2.0.0.3 --->4.0.0.1\n"
 net node 2.0.0.3 traceroute 4.0.0.1
+
+print "\n3.0.0.1 --->4.0.0.2\n"
 net node 3.0.0.1 traceroute 4.0.0.2
+
+print "\n3.1.0.1 --->4.200.0.1\n"
 net node 3.1.0.1 traceroute 4.200.0.1
+
+print "\n3.1.0.1 --->130.104.0.1\n"
 net node 3.1.0.1 traceroute 130.104.0.1
+
+print "\n3.1.0.1 --->1.0.0.2\n"
 net node 3.1.0.1 traceroute 1.0.0.2
+
+print "\n139.165.0.1 --->4.0.0.3\n"
 net node 139.165.0.1 traceroute 4.0.0.3
