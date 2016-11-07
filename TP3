@@ -1221,3 +1221,6 @@ net node 3.1.0.1 traceroute 1.0.0.2
 
 print "\n139.165.0.1 --->4.0.0.3\n"
 net node 139.165.0.1 traceroute 4.0.0.3
+
+print "\n4.200.0.1 --->3.1.0.1"
+net node 4.200.0.1 traceroute 3.1.0.1
