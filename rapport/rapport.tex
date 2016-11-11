@@ -71,7 +71,8 @@ Nous avons définit le poids IGP de chaque lien grâce au temps de transmission 
 Toute les routes inter-domaines ont été ajoutées statiquement. Le routage intra-domaine est réalisé grâce à IGP et iBGP.\\
 
 En ce qui concerne les filtres, de manière générale, nous avons opté pour la solution suivante:\\
-soit 3 AS, AS1, AS2, AS3 (voir figure \ref{as}). AS1 est fournisseur de AS2 et AS3 et il y a un lien de peering entre AS2 et AS3. Plaçons nous dans l'AS2, s'il reçoit des routes venant de AS3 il ne vas pas les annoncer à 	AS1 car il pourrait les utiliser ce qui est contraire au politique de routage. De même, s'il reçoit des routes de AS1, il ne va pas les annoncer à l'AS3. Nous avons comme cas particulier que Abilene et GEANT ne transmette pas les routes de Spring et BigCarrier car ce sont des réseaux de non-profit. Il y a une exception pour GEANT qui transmet les routes au CERN sinon il n'a pas de connectivité au AS Spring,BigCarrier et iCompany.
+soit 3 AS, AS1, AS2, AS3 (voir figure \ref{as}). AS1 est fournisseur de AS2 et AS3 et il y a un lien de peering entre AS2 et AS3. Plaçons nous dans l'AS2, s'il reçoit des routes venant de AS3 il ne vas pas les annoncer à AS1 car il pourrait les utiliser ce qui est contraire au politique de routage. De même, s'il reçoit des routes de AS1, il ne va pas les annoncer à l'AS3. Nous avons comme cas particulier que Abilene et GEANT ne transmette pas les routes de Spring et BigCarrier car ce sont des réseaux de non-profit. Il y a une exception pour GEANT qui transmet les routes au CERN sinon il n'a pas de connectivité au AS Spring,BigCarrier et iCompany.
+Pour respecter les liens customer-provider et peering, nous avons utilisé les commuautés (1 pour customer-provider et 2 pour peering). Il est donc plus facile de choisir quels route transmettre en fonction de la relation avec le voisin.
 \begin{figure}[!h] %on ouvre l'environnement figure
 		\centering
 		\includegraphics[width=120mm,height=80mm]{as}
@@ -80,7 +81,7 @@ soit 3 AS, AS1, AS2, AS3 (voir figure \ref{as}). AS1 est fournisseur de AS2 et A
 	\end{figure} 
 	
 \section{Problèmes}
-Nous n'avons pas de solution pour les 3 domaines possédant 2 préfixes, seulement le premier préfixe a été utilisé. Certains hôtes sont injoignables à partir de certains routeurs, nous n'avons pas réussi à trouver d'où cela pouvait provenir. 
+Nous n'avons pas de solution pour les 3 domaines possédant 2 préfixes, seulement le premier préfixe a été utilisé.
 
 \section{Conclusion}
 Ce projet nous a permis de mieux comprendre certains principes de BGP ainsi que nous apprendre quelque base dans la modélisation d'une interconnexion de réseau.
