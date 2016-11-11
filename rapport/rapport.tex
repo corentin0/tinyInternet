@@ -53,7 +53,7 @@
 \raggedright
 
 \section{Introduction}
-Le but de ce projet était de modéliser une interconnexion de réseau en utilisant C-BGP. Il nous était demander de réaliser une configuration complète de plusieurs routeurs appartenant à divers domaines.
+Le but de ce projet était de modéliser une interconnexion de réseaux en utilisant C-BGP. Il nous était demandé de réaliser une configuration complète de plusieurs routeurs appartenant à divers domaines.
 
 \section{Choix de design}
 La topologie que nous devions implémenter était la suivante:
@@ -71,8 +71,8 @@ Nous avons définit le poids IGP de chaque lien grâce au temps de transmission 
 Toute les routes inter-domaines ont été ajoutées statiquement. Le routage intra-domaine est réalisé grâce à IGP et iBGP.\\
 
 En ce qui concerne les filtres, de manière générale, nous avons opté pour la solution suivante:\\
-soit 3 AS, AS1, AS2, AS3 (voir figure \ref{as}). AS1 est fournisseur de AS2 et AS3 et il y a un lien de peering entre AS2 et AS3. Plaçons nous dans l'AS2, s'il reçoit des routes venant de AS3 il ne vas pas les annoncer à AS1 car il pourrait les utiliser ce qui est contraire au politique de routage. De même, s'il reçoit des routes de AS1, il ne va pas les annoncer à l'AS3. Nous avons comme cas particulier que Abilene et GEANT ne transmette pas les routes de Spring et BigCarrier car ce sont des réseaux de non-profit. Il y a une exception pour GEANT qui transmet les routes au CERN sinon il n'a pas de connectivité au AS Spring,BigCarrier et iCompany.
-Pour respecter les liens customer-provider et peering, nous avons utilisé les commuautés (1 pour customer-provider et 2 pour peering). Il est donc plus facile de choisir quels route transmettre en fonction de la relation avec le voisin.
+soit 3 AS : AS1, AS2, AS3 (voir figure \ref{as}). AS1 est fournisseur de AS2 et AS3 et il y a un lien de peering entre AS2 et AS3. Plaçons nous dans l'AS2, s'il reçoit des routes venant de AS3 il ne vas pas les annoncer à AS1 car il pourrait les utiliser ce qui est contraire au politique de routage. De même, s'il reçoit des routes de AS1, il ne va pas les annoncer à l'AS3. Nous avons comme cas particulier que Abilene et GEANT ne transmettent pas les routes de Spring et BigCarrier car ce sont des réseaux de non-profit. Il y a une exception pour GEANT qui transmet les routes au CERN sinon il n'a pas de connectivité aux AS Spring, BigCarrier et iCompany.
+Pour respecter les liens customer-provider et peering, nous avons utilisé les communautés (1 pour customer-provider et 2 pour peering). Il est donc plus facile de choisir quelles routes transmettre en fonction de la relation avec le voisin.
 \begin{figure}[!h] %on ouvre l'environnement figure
 		\centering
 		\includegraphics[width=120mm,height=80mm]{as}
@@ -81,10 +81,10 @@ Pour respecter les liens customer-provider et peering, nous avons utilisé les c
 	\end{figure} 
 	
 \section{Problèmes}
-Nous n'avons pas de solution pour les 3 domaines possédant 2 préfixes, seulement le premier préfixe a été utilisé.
+Nous avons rencontré un problème que nous n'avons su résoudre. Celui-ci consiste en l'injoignabilité des préfixes 2.2.1.0/24 et 1.1.0.0/24 depuis n'importe quel autre routeur d'autres sous-réseaux. Les différentes tentatives pour joindre ces deux préfixes aboutissent toute à un bouclage infini lors du calcul de la route. 
 
 \section{Conclusion}
-Ce projet nous a permis de mieux comprendre certains principes de BGP ainsi que nous apprendre quelque base dans la modélisation d'une interconnexion de réseau.
+Ce projet nous a permis de mieux comprendre certains principes de BGP ainsi que nous apprendre quelques base dans la modélisation d'une interconnexion de réseaux.
 
 
 
